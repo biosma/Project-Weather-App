@@ -42,7 +42,7 @@ unitButton.addEventListener("click", () => {
     dataTreatment(weatherData, cityName);
 })
 async function getCity(lat, long){
-    city = await fetch (`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=135f8d3f1557e18e0522ff6fed224cb9`);
+    city = await fetch (`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=135f8d3f1557e18e0522ff6fed224cb9`);
     defaultSearch = await city.json();
     return defaultSearch[0].name;
 }
@@ -51,7 +51,7 @@ async function getsWeather(search){
     try {
         cityName = await search //Paso un search y no las lat y long del navigator por si alguien usa el input.
         localStorage.setItem('ciudad',`${cityName}`)// se sobrescribe el cache cada vez que se consulta.
-        localization = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=135f8d3f1557e18e0522ff6fed224cb9`);
+        localization = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=135f8d3f1557e18e0522ff6fed224cb9`);
         const localizationData = await localization.json();
         const localizationLat = localizationData[0].lat;
         const localizationLon = localizationData[0].lon;
