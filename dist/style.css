@@ -1,0 +1,121 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: 'Gilroy-Regular';
+    src: url(Fonts/Gilroy-Semibold.otf);
+    font-weight: normal;
+}
+body{
+    background-image: url("./Images/Mist2.jpg");
+    background-size: cover;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 95vh;
+}
+.settings{
+    margin: 16px;
+}
+input[type=search], input[type=search]:focus{
+    margin: 0;
+    padding-left: 12px;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    border: none;
+    outline: none;
+    color: #ffffff;
+    border-radius: 20px;
+    width: 16vw;
+    height: 5vh;
+    font-weight: 500;
+    font-family: 'Gilroy-Regular', cursive;
+    text-shadow: 1px 1px 1px rgb(71, 43, 94);
+}
+button, input[type=submit]{
+    margin: 0;
+    width: 4.16vw;
+    height: 5vh;
+    background: rgba(255, 255, 255, .3);
+    color:#ffffff;
+    -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    font-family: 'Gilroy-Regular', cursive;
+    text-shadow: 1px 1px 1px rgb(71, 43, 94);
+}
+.information{
+    height: 95vh;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+    "a a b b c c"
+    "d d b b f f"
+    "g g g h h h";
+    grid-template-columns: repeat(6, 16.5vw);
+}
+.day-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-self: center;
+    grid-area: b;
+    height: 50vh;
+    width: 25vw;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 20px;
+}
+.day-2, .day-3, .day-4, .day-5, .day-6, .day-7{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-self: center;
+    height: 25vh;
+    width: 25vw;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 20px;
+}
+.day-2{
+    grid-area: a;
+}
+.day-3{
+    grid-area: d;
+}
+.day-4{
+    grid-area: g;
+}
+.day-5{
+    grid-area: h;
+}
+.day-6{
+    grid-area: f;
+}
+.day-7{
+    grid-area: c;
+}
+p{
+    color: #ffffff;
+    text-shadow: 1px 1px 1px rgb(71, 43, 94);
+    font-weight: 500;
+    font-family: 'Gilroy-Regular', cursive;
+}
