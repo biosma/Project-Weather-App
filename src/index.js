@@ -83,15 +83,15 @@ function dataTreatment(data, cityDesc){
         weatherDos = document.querySelector(`.weather-${i}`);
         weatherDos.textContent = capitalize(data.daily[(i)].weather[0].description);
         humidityDos = document.querySelector(`.humidity-${i}`);
-        humidityDos.textContent = "Humidity: " + data.daily[(i)].humidity +"%";
+        humidityDos.textContent = `Humidity: ${data.daily[(i)].humidity} %`;
         windDos = document.querySelector(`.wind-${i}`);
         feelsLikeDos = document.querySelector(`.feelslike-${i}`);
         if(unit === "°C"){
-            windDos.textContent = "Wind: " + data.daily[(i)].wind_speed.toFixed(2) + " Km/h";
-            feelsLikeDos.textContent = "Feels Like " + Math.round(-273 + data.daily[(i)].feels_like.morn) + unit;
+            windDos.textContent = `Wind: ${data.daily[(i)].wind_speed.toFixed(2)} Km/h`;
+            feelsLikeDos.textContent = `Feels Like ${Math.round(-273 + data.daily[(i)].feels_like.morn) + unit}`;
         }else{
-            windDos.textContent = (data.daily[(i)].wind_speed/1.609).toFixed(2) + " Mp/h";
-            feelsLikeDos.textContent = "Feels Like " + Math.round((data.daily[(i)].feels_like.morn - 273.15) * 9/5 + 32) + unit;
+            windDos.textContent = `${(data.daily[(i)].wind_speed/1.609).toFixed(2)} Mp/h`;
+            feelsLikeDos.textContent = `Feels Like ${Math.round((data.daily[(i)].feels_like.morn - 273.15) * 9/5 + 32) + unit}`;
         }
     }
 }
