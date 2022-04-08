@@ -9,19 +9,17 @@ const inputCity = document.querySelector(".search");
 let cityDescription = document.querySelector(".city-description");
 let unitButton = document.querySelector(".unit");
 let unit = "°C";
-
-if(cityCache ===""){
-    navigator.geolocation.getCurrentPosition(function(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        cityCache = getCity(latitude, longitude);
-        localStorage.setItem('ciudad',`${cityCache}`);
-        getsWeather(getCity(latitude, longitude));
-    })
-}else{
-    let cityCached = localStorage.getItem('ciudad');
-    getsWeather(cityCached);//Esta bien llamar a la api porque si trataramos los datos en cache, siempre serian los mismos datos.
-}
+ //No se si tiene sentido que si el cache esta null te vuelva a preguntar, deberia ser si esta vacio y cuando este null meta default city
+navigator.geolocation.getCurrentPosition(function(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    cityCache = getCity(latitude, longitude);
+    localStorage.setItem('ciudad',`${cityCache}`);
+    getsWeather(getCity(latitude, longitude));
+}, function onError() {
+    console.log("ocurrio un error o no hay permisos para ver la ubicación");
+    getsWeather("Los Angeles")
+  })
 
 inputCity.addEventListener("change", (e) => {
     defaultSearch = e.target.value;
