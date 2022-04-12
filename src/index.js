@@ -1,7 +1,7 @@
 let latitude
 let longitude
 let city
-let cityName = "Los Angeles"
+let cityName
 let cityCache
 let weatherData
 const searchCity = document.querySelector(".submit");
@@ -9,16 +9,18 @@ const inputCity = document.querySelector(".search");
 let cityDescription = document.querySelector(".city-description");
 let unitButton = document.querySelector(".unit");
 let unit = "°C";
- //No se si tiene sentido que si el cache esta null te vuelva a preguntar, deberia ser si esta vacio y cuando este null meta default city
+//hay que corregir pues si queda null no sale el permiso y tampoco se actualiza con la default city
 navigator.geolocation.getCurrentPosition(function(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    cityCache = getCity(latitude, longitude);
-    localStorage.setItem('ciudad',`${cityCache}`);
     getsWeather(getCity(latitude, longitude));
 }, function onError() {
     console.log("ocurrio un error o no hay permisos para ver la ubicación");
-    getsWeather("Los Angeles")
+    cityCache = localStorage.getItem('ciudad')
+    if(cityCache === "" || cityCache === "Null"|| cityCache === "undefined"){
+        cityCache = "Los Angeles"
+    };
+    getsWeather(cityCache);
   })
 
 inputCity.addEventListener("change", (e) => {
